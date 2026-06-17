@@ -10,6 +10,10 @@ Create tasks, manage projects, query your lists, reschedule, complete, and delet
 
 `/things-app` bridges Claude and Things 3 via **AppleScript** (`osascript`). This means Claude can both **write** (create, update, move, delete tasks) and **read** (query lists, return task data back into the conversation) — making it suitable for automation workflows, not just one-way commands.
 
+It also fills two gaps Things 3 doesn't natively support:
+- **Import from Apple Reminders** — copy a Reminders list into Things as a project, preserving sections as headings
+- **YAML templates** — define reusable project structures as `.yaml` files and import them into Things on demand
+
 It is intentionally a building block. On its own it manages Things. Combined with other Claude tools (Gmail, Calendar, file access) it becomes a powerful automation layer.
 
 ---
@@ -126,7 +130,6 @@ This example combines `/things-app` with Gmail MCP tools — it is not built int
 For every email in Gmail labelled "Follow Up":
 - Create a Things inbox task using the email subject as the title
 - Add a link to the email thread in the task notes
-- Remove the "Follow Up" label from the email
 ```
 
 Claude will use the Gmail MCP to read the emails and `/things-app` to create the tasks in a single conversation turn.
@@ -140,14 +143,101 @@ grouped by project
 
 ---
 
+## Importing from Apple Reminders
+
+Things 3 has no built-in import from Reminders. This skill reads a Reminders list via AppleScript and recreates it in Things as a project — including section headings.
+
+**How to do it:**
+
+```
+Copy my Reminders list "Packing List" into Things as a project
+```
+
+Claude will:
+1. Read all items from the named Reminders list via AppleScript
+2. Identify section headings (you confirm them if ambiguous — Reminders AppleScript returns a flat list; section names appear as items)
+3. Create the Things project with correct headings using the `things:///json` URL scheme
+
+**Why the section step is manual:**  
+Apple's Reminders AppleScript API does not expose sections — it returns all items as a flat list. Section names appear as regular items in the output. Claude will identify likely candidates and ask you to confirm before creating the project.
+
+**Example:**
+
+Given a Reminders list with sections *Before You Leave*, *Carry On*, and *Checkin Luggage*, Claude reads the flat list, spots the section names, and creates:
+
+```
+Project: Packing List
+  ── Before You Leave
+      Checkin Online
+      Charge Electronics
+      ...
+  ── Carry On
+      Laptop
+      AirPods
+      ...
+```
+
+---
+
+## YAML Templates
+
+Things 3 has no native template support. This skill introduces a simple YAML format for reusable project structures.
+
+### Template format
+
+```yaml
+name: Project Name
+type: project
+
+sections:
+
+  - title: Section Heading
+    tasks:
+      - Task one
+      - Task two
+
+  - title: Another Section
+    tasks:
+      - Task three
+```
+
+### Importing a template
+
+```
+/things-app import /path/to/template.yaml
+```
+
+Claude reads the YAML file, converts it to the Things JSON format, and creates the project with all headings and tasks in one call.
+
+**Example:**
+
+```
+/things-app import ~/.claude/skills/things-app/templates/cairns-trip.yaml
+```
+
+Creates a *Cairns Trip* project with 5 sections and 80 tasks.
+
+### Bundled templates
+
+| Template | Description |
+|----------|-------------|
+| [`templates/cairns-trip.yaml`](templates/cairns-trip.yaml) | International travel packing list with sections for carry-on, check-in luggage, electronics, personal care, and pre-departure tasks |
+
+You can add your own templates anywhere on disk and import them by path.
+
+---
+
 ## How it works
 
-The skill is defined in [`SKILL.md`](SKILL.md) — a Markdown file with YAML frontmatter that Claude Code reads to understand when and how to invoke the skill.
+The skill is defined in [`SKILL.md`](SKILL.md) — a Markdown file with YAML frontmatter that Claude reads to understand when and how to invoke the skill.
 
 At runtime, Claude generates AppleScript and executes it via `osascript` in Bash. Things 3 launches automatically if it isn't already running.
 
 **Why AppleScript over the Things URL scheme?**  
 The Things URL scheme (`things:///`) is write-only — it can trigger actions but cannot return data. AppleScript supports full bidirectional communication: Claude can query your tasks and use the results in its response or chain them into further actions.
+
+**One exception — headings:**  
+Headings inside projects are not in the Things 3 AppleScript dictionary and cannot be created via AppleScript. For any operation that requires headings (creating a project with sections, importing a template), the skill falls back to the `things:///json` URL scheme, which does support them.
 
 **Documentation sources:**
 - [Things AppleScript Overview](https://culturedcode.com/things/support/articles/2803572/)
@@ -161,7 +251,7 @@ The Things URL scheme (`things:///`) is write-only — it can trigger actions bu
 | Path | Purpose |
 |------|---------|
 | [`SKILL.md`](SKILL.md) | Skill definition — instructions Claude follows |
-| [`scripts/`](scripts/) | Helper scripts (currently unused) |
+| [`templates/`](templates/) | Reusable YAML project templates |
 | [`reference/`](reference/) | Reference docs loaded on demand |
 | [`LICENSE`](LICENSE) | MIT |
 
