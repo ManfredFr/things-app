@@ -11,7 +11,7 @@ Create tasks, manage projects, query your lists, reschedule, complete, and delet
 `/things-app` bridges Claude and Things 3 via **AppleScript** (`osascript`). This means Claude can both **write** (create, update, move, delete tasks) and **read** (query lists, return task data back into the conversation) — making it suitable for automation workflows, not just one-way commands.
 
 It also fills two gaps Things 3 doesn't natively support:
-- **Import from Apple Reminders** — copy a Reminders list into Things as a project, preserving sections as headings
+- **Import from Apple Reminders** _(deprecated)_ — copy a Reminders list into Things as a project (flat list only; Reminders' AppleScript API exposes no sections)
 - **YAML templates** — define reusable project structures as `.yaml` files and import them into Things on demand
 
 It is intentionally a building block. On its own it manages Things. Combined with other Claude tools (Gmail, Calendar, file access) it becomes a powerful automation layer.
@@ -143,9 +143,11 @@ grouped by project
 
 ---
 
-## Importing from Apple Reminders
+## Importing from Apple Reminders (deprecated)
 
-Things 3 has no built-in import from Reminders. This skill reads a Reminders list via AppleScript and recreates it in Things as a project — including section headings.
+> **⚠️ Deprecated.** Kept for backward compatibility only. Reminders' AppleScript API cannot expose sections, so this import is always a **flat list** and loses any structure the source list had. For a structured project, use a [YAML template](#yaml-templates) instead. This feature may be removed in a future release.
+
+Things 3 has no built-in import from Reminders. This skill reads a Reminders list via AppleScript and recreates it in Things as a project.
 
 **How to do it:**
 
@@ -155,27 +157,12 @@ Copy my Reminders list "Packing List" into Things as a project
 
 Claude will:
 1. Read all items from the named Reminders list via AppleScript
-2. Identify section headings (you confirm them if ambiguous — Reminders AppleScript returns a flat list; section names appear as items)
-3. Create the Things project with correct headings using the `things:///json` URL scheme
+2. Create the Things project with those tasks
 
-**Why the section step is manual:**  
-Apple's Reminders AppleScript API does not expose sections — it returns all items as a flat list. Section names appear as regular items in the output. Claude will identify likely candidates and ask you to confirm before creating the project.
+**Sections are not preserved — the import is a flat list.**  
+Apple's Reminders AppleScript API has no section/group support: it returns **only the reminders**, and section headers are omitted from the output entirely (they are not even returned as ordinary items). There is no AppleScript-only way to recover them. The only alternatives — reading the Reminders SQLite store (requires granting Full Disk Access) or reading the app's on-screen UI — are not portable, so this skill deliberately does not use them.
 
-**Example:**
-
-Given a Reminders list with sections *Before You Leave*, *Carry On*, and *Checkin Luggage*, Claude reads the flat list, spots the section names, and creates:
-
-```
-Project: Packing List
-  ── Before You Leave
-      Checkin Online
-      Charge Electronics
-      ...
-  ── Carry On
-      Laptop
-      AirPods
-      ...
-```
+If you want sections in the resulting Things project, add the headings yourself afterwards, or import from a [YAML template](#yaml-templates) instead, which supports sections by design.
 
 ---
 

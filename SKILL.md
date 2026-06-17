@@ -432,3 +432,31 @@ subprocess.run(["open", f"things:///json?data={encoded}"])
 
 ### Limitations
 Not all Things features are available via AppleScript. If something isn't documented here, it's likely not possible via scripting.
+
+---
+
+## Exporting a Reminders.app list to this YAML format
+
+> **⚠️ Deprecated.** This path is kept for backward compatibility only. Because Reminders' AppleScript API cannot expose sections (see below), the export is always a flat list and loses any structure the source had. Prefer authoring a [YAML template](#yaml-templates) directly, which supports sections by design. Only use this when the user explicitly asks to pull an existing Reminders list and accepts a flat result.
+
+Sometimes the source list lives in **Reminders.app**, not Things.
+
+**Sections cannot be exported. The result is always a flat list.** Reminders' AppleScript dictionary has **no section/group class** — sections are a UI-only feature, and a reminder carries no pointer to its section (`container` is always the list). Crucially, section headers are **not** returned as reminders either: `name of reminders of list` returns *only the actual reminders*, with the section headers omitted entirely. There is no field, no trailing block, and no ordering trick that recovers them. (The only ways to read sections are the SQLite Core Data store, which needs Full Disk Access, or reading the app UI — neither is portable, so neither is used here.)
+
+Do **not** try to guess sections from the item stream or relabel items as headers. Export the flat list as-is and leave section reconstruction to the user.
+
+**Always read names newline-delimited — NEVER comma-split.** Item names contain commas (e.g. `Laptop Charger, cable, adaptor` is ONE reminder). Splitting on commas shatters such items into fakes — this was the original export bug.
+
+```bash
+osascript <<'EOF'
+tell application "Reminders"
+  set AppleScript's text item delimiters to linefeed
+  return (name of reminders of list "LIST NAME") as text
+end tell
+EOF
+```
+
+Export procedure:
+1. Read names newline-delimited (above). Bulk reads are fast; never iterate reminder-by-reminder (slow, may hang).
+2. Emit each reminder, in the order returned, as a flat task list in the YAML.
+3. Reproduce item text **verbatim** — never fix typos, casing, or punctuation.
