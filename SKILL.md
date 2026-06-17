@@ -341,5 +341,33 @@ Always use unambiguous date formats to avoid locale misinterpretation: `date "20
 - `due date` is the deadline — setting it alone does not move the task out of the Inbox.
 - Unless the user explicitly asks to schedule a task, never set `activation date`.
 
+### Headings in projects
+**Headings are not supported via AppleScript** — they are absent from the Things 3 AppleScript dictionary entirely. To create a project with headings, use the `things:///json` URL scheme instead:
+
+```python
+import urllib.parse, json, subprocess
+
+data = [{
+    "type": "project",
+    "attributes": {
+        "title": "My Project",
+        "items": [
+            {"type": "heading", "attributes": {"title": "Section One"}},
+            {"type": "to-do", "attributes": {"title": "First task"}},
+            {"type": "to-do", "attributes": {"title": "Second task"}},
+            {"type": "heading", "attributes": {"title": "Section Two"}},
+            {"type": "to-do", "attributes": {"title": "Another task"}},
+        ]
+    }
+}]
+
+json_str = json.dumps(data)
+json.loads(json_str)  # validate before sending
+encoded = urllib.parse.quote(json_str, safe='')
+subprocess.run(["open", f"things:///json?data={encoded}"])
+```
+
+Always validate the JSON with `json.loads()` before encoding and sending — Things silently rejects malformed JSON with a generic error dialog.
+
 ### Limitations
 Not all Things features are available via AppleScript. If something isn't documented here, it's likely not possible via scripting.
