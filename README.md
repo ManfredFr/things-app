@@ -34,7 +34,19 @@ Clone the repository into your Claude skills directory:
 git clone https://github.com/ManfredFr/things-app.git ~/.claude/skills/things-app
 ```
 
-Claude automatically discovers skills from `~/.claude/skills/`. The skill is immediately available as `/things-app`.
+Claude automatically discovers skills from `~/.claude/skills/`. Restart Claude (Code or Cowork) to load a newly installed skill — discovery runs at startup. The skill is then available as `/things-app`.
+
+> **Install a real clone, not a symlink.** Cloning (a regular directory) is what Claude's skill discovery expects. A symlink — e.g. pointing at a working copy in Dropbox/iCloud — may not be followed, and sandboxed apps like Cowork can be blocked from reading the link's target.
+
+### Updating
+
+Pull the latest into the installed copy:
+
+```bash
+git -C ~/.claude/skills/things-app pull
+```
+
+Then restart Claude to pick up the changes.
 
 ---
 
