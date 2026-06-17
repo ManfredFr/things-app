@@ -39,8 +39,6 @@ Claude Code automatically discovers skills from `~/.claude/skills/`. Restart Cla
 
 > **Install a real clone, not a symlink.** Cloning (a regular directory) is what skill discovery expects. A symlink — e.g. pointing at a working copy in Dropbox/iCloud — may not be followed, and sandboxed apps can be blocked from reading the link's target.
 
-> **About the `.skill` release asset.** Each tagged release attaches a `things-app.skill` file (built by [`.github/workflows/package-skill.yml`](.github/workflows/package-skill.yml)) for the desktop app's one-click install. It installs, but the skill still **won't function in Cowork** for the sandbox reason above — it's provided for completeness, not as a supported path.
-
 ### Updating
 
 Pull the latest into the installed copy:

@@ -23,7 +23,6 @@ Contributions are welcome. All changes go through a pull request and require rev
 - Test your AppleScript snippets in Things 3 before submitting
 - If you're adding a new operation, add a matching example to `README.md`
 - Do not modify the `description` frontmatter in `SKILL.md` without discussion — it controls when Claude triggers the skill automatically
-- **Never use angle brackets (`<...>`) anywhere in the `SKILL.md` frontmatter.** The Cowork skill validator parses them as XML tags and rejects the `.skill` file (use `[brackets]` for placeholders, e.g. `import [path]`). The release CI enforces this and will fail the build if any are present.
 
 ## Questions
 
