@@ -1,6 +1,6 @@
 ---
 name: things-app
-description: Interact with the Things 3 task manager app on macOS using AppleScript. Use this skill whenever the user wants to create tasks, read tasks, list to-dos, manage projects, search Things, show a list, update or complete existing tasks, import a YAML template, or do anything with Things 3 — even if they don't say "Things" explicitly but context makes it clear they're using it for task management. Also trigger on "/things-app import <path>" to import a YAML template as a Things project.
+description: Interact with the Things 3 task manager app on macOS using AppleScript. Use this skill whenever the user wants to create tasks, read tasks, list to-dos, manage projects, search Things, show a list, update or complete existing tasks, import a YAML template, or do anything with Things 3 — even if they don't say "Things" explicitly but context makes it clear they're using it for task management. Also trigger on "/things-app import [path]" to import a YAML template as a Things project.
 compatibility:
   platform: macOS
   requires: Things 3 (must be installed)
