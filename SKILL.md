@@ -305,6 +305,13 @@ end tell
 - `to do named "X"` — use when the name is known exactly (throws an error if not found).
 - `to dos of list "Today"` + `repeat` — use when iterating or searching by property.
 
+### Resolving a list/project/area by name
+When the user says "add to X" and X is not a built-in list, try in this order:
+1. `tell project "X"` — if that errors, fall back to
+2. `tell area "X"` — if that also errors, tell the user X was not found
+
+Built-in list names (`"Inbox"`, `"Today"`, `"Anytime"`, `"Upcoming"`, `"Someday"`, `"Logbook"`, `"Trash"`) use `list "X"` directly and do not need this fallback.
+
 ### Dates
 Always use unambiguous date formats to avoid locale misinterpretation: `date "20 June 2026"`. Do not use ISO format (`date "2026-06-20"`) — it gets parsed incorrectly depending on system locale. Natural language works too: `date "today"`, `date "tomorrow"`.
 
