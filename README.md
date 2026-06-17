@@ -28,6 +28,14 @@ It is intentionally a building block. On its own it manages Things. Combined wit
 
 ## Installation
 
+### Cowork / Claude desktop app (one-click)
+
+Download the latest **`things-app.skill`** from the [Releases page](https://github.com/ManfredFr/things-app/releases/latest), open it in the Claude desktop app, and click **Save skill**. It then appears under **Settings → Capabilities → Skills**.
+
+The `.skill` file is built and attached to every tagged release automatically (see [`.github/workflows/package-skill.yml`](.github/workflows/package-skill.yml)).
+
+### Claude Code (clone)
+
 Clone the repository into your Claude skills directory:
 
 ```bash
