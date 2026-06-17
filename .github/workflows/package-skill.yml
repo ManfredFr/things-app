@@ -18,6 +18,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Validate frontmatter (no angle brackets)
+        run: |
+          # Cowork's validator parses <...> in the frontmatter as XML tags and
+          # rejects the .skill. Fail fast if any appear between the first two ---.
+          fm=$(awk '/^---$/{c++; next} c==1{print} c==2{exit}' SKILL.md)
+          if echo "$fm" | grep -n '<[^>]*>'; then
+            echo "::error::SKILL.md frontmatter contains angle brackets (<...>), which Cowork rejects. Use [brackets] instead."
+            exit 1
+          fi
+          echo "Frontmatter OK — no angle brackets."
+
       - name: Build .skill archive
         run: |
           # git archive excludes .git and untracked files, and prefixes every
