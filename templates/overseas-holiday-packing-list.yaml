@@ -3,38 +3,87 @@ type: project
 
 sections:
 
-  - title: Checkin Luggage - Electronics
+  - title: Carry On
     tasks:
       - iPad and Pencil
-      - Drivers License
-      - Directions (Accomodation etc)
-      - Melatonin
+      - iPhone Cable + Adaptor + Charger
+      - Power Bank
+      - Laptop
       - Glasses
       - Sun Glasses
       - Vaccine Passport (Print)
-      - Skincare
       - Airline Ticket (Print)
       - Paper Clip (SIM)
-      - Socks
       - Mask Exemption (Print)
+      - Directions (Accomodation etc)
       - AirPods
       - Drink Bottle
-      - Visa Documents
-      - Laptop
-      - Toothpaste + brush
       - Passport
-      - Hat (wully or sun protection)
+      - Visa Documents
+      - Drivers License
+      - Melatonin
+      - Deodorant
+      - Skincare
+      - Toothpaste + brush
+      - Hatt (wully or sun protection)
       - Liquids in plastic bags
+      - Socks
       - Scarf
       - Aeroplane adaptor and headset
       - Cash
       - Pens
       - Umbrella
-      - iPhone Cable + Adaptor + Charger
-      - Deodorant
       - Neck Rest
       - Ear plugs
-      - Drivers License
+
+  - title: CheckIn Luggage - Personal Care
+    tasks:
+      - Nail File
+      - Nail Scissor
+      - Toothbrush
+      - Toothpaste
+      - Floss
+      - Soap
+      - Shaving Gel
+      - Shaver Blades
+      - Shaver
+      - Sun Scream
+      - Melatonin
+      - Soap
+      - Pain Killers
+      - Face wash cloth
+
+  - title: CheckIn Luggage - Electronics
+    tasks:
+      - Camera + Batterie + Charger + Cable
+      - USB-C charging station + power cable
+      - Power Adopter
+      - Headset
+      - Laptop Charger + cable + adaptor"
+      - Apple Watch Charger
+
+  - title: Checkin Luggage
+    tasks:
+      - Hiking Boots
+      - Hiking Pants
+      - Hiking Socks
+      - Running Shoes
+      - Running Shirt
+      - Running Shorts
+      - Running Had
+      - Rain Trousers
+      - Towel Beach
+      - Underwear
+      - Socks
+      - Rain Jacket
+      - Sun Hat
+      - Shorts
+      - Jeans
+      - Towels
+      - Shoes
+      - Jandals
+      - T-Shirts
+      - Button down shirt
 
   - title: Before You Leave
     tasks:
@@ -45,55 +94,5 @@ sections:
       - Add local area map to iPhone
       - Top up Metro Cards
       - Charge Credit Card
-      - Empty / open dish washer
+      - Empty and open dish washer
       - Book Taxi To Airport
-
-  - title: Carry On
-    tasks:
-      - Camera Batterie Charger + Cable
-      - USB-C charging station + power cable
-      - Power Adopter
-      - Headset
-      - HDMI Adaptor
-      - Laptop Charger
-      - Cable
-      - Adaptor
-      - Apple Watch Charger
-
-  - title: Checkin Luggage - Personal Care
-    tasks:
-      - Pain Killers
-      - Nail File
-      - Nail Scissor
-      - Toothbrush
-      - Floss
-      - Soap
-      - Shaving Gel
-      - Shaver
-      - Toothpaste
-      - Sun Scream
-      - Melatonin
-      - Shaver Blades
-
-  - title: Checkin Luggage
-    tasks:
-      - Hiking Boots
-      - Hiking Pants
-      - Button down shirt
-      - Jeans
-      - Shoes
-      - Running Shoes
-      - Rain Trousers
-      - Running Hat
-      - Towel Beach
-      - Underwear
-      - Socks
-      - Rain Jacket
-      - Sun Hat
-      - Towels
-      - Hiking Socks
-      - Jandals
-      - T-Shirts
-      - Running Shirt
-      - Face wash cloth
-      - Running Shorts
