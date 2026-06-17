@@ -1,0 +1,286 @@
+name: AirBnB Setup
+type: project
+
+sections:
+
+  - title: Legal & Compliance
+    tasks:
+      - Research short-term rental laws in your city/region
+      - Check body corporate or strata rules for STR permission
+      - Obtain short-term rental permit or licence
+      - Register with local council / city authority
+      - Add property to local STR register if required
+      - Check zoning laws allow short-term rental
+      - Draft and review house rules (legally sound)
+      - Set up a legal entity (sole trader, LLC, trust) if needed
+      - Consult accountant on GST/VAT obligations
+      - Understand local occupancy tax / tourist levy requirements
+      - Register to collect and remit occupancy tax if required
+      - Keep records of all rental income for tax filing
+
+  - title: Insurance
+    tasks:
+      - Cancel or adjust standard home insurance (usually void for STR)
+      - Research dedicated STR insurance providers
+      - Obtain STR-specific landlord/host insurance policy
+      - Confirm policy covers guest injury and property damage
+      - Check AirBnB Host Guarantee terms and limitations
+      - Document all furnishings and valuables for insurance records
+      - Photograph entire property before first guest (timestamped)
+
+  - title: Structural & Safety
+    tasks:
+      - Install smoke detectors in all required rooms
+      - Install carbon monoxide detector
+      - Check all detectors are working and batteries fresh
+      - Install fire extinguisher (kitchen minimum)
+      - Create and display fire escape plan
+      - Ensure all exits are clearly marked and unobstructed
+      - Check all door locks are functional and secure
+      - Install window locks or restrictors where required
+      - Test all electrical outlets and switches
+      - Check RCD/safety switch is installed and functional
+      - Ensure hot water temperature is set to safe level (≤50°C)
+      - Fix any trip hazards (loose carpet, uneven floors, steps)
+      - Ensure adequate outdoor/entrance lighting
+      - Check balcony or deck railings are secure
+      - Install first aid kit
+
+  - title: Access & Key Management
+    tasks:
+      - Decide on access method (lockbox, smart lock, key handoff)
+      - Install smart lock or coded lockbox
+      - Test access system thoroughly
+      - Create unique codes per guest if using smart lock
+      - Write clear check-in instructions with step-by-step access guide
+      - Test check-in process as a guest would experience it
+      - Set up backup key with trusted local contact
+      - Label circuit breaker / fuse box clearly
+      - Label all utility shut-off valves (water, gas)
+
+  - title: Furniture & Layout
+    tasks:
+      - Plan furniture layout for each room
+      - Purchase or source bed frames for all bedrooms
+      - Purchase quality mattresses (medium-firm recommended)
+      - Purchase bedside tables and lamps for each bedroom
+      - Purchase wardrobe or clothes storage for each bedroom
+      - Purchase dining table and chairs (seats = max guest count)
+      - Purchase sofa and lounge seating
+      - Purchase coffee table
+      - Purchase TV unit or media console
+      - Purchase desk and chair if workspace is offered
+      - Purchase hallway console or entry furniture
+      - Purchase outdoor furniture if balcony/patio available
+      - Assemble all flat-pack furniture
+      - Anchor heavy furniture to walls for safety
+
+  - title: Kitchen — Equipment & Appliances
+    tasks:
+      - Purchase or confirm fridge/freezer is working
+      - Purchase or confirm oven and stovetop are working
+      - Purchase microwave
+      - Purchase kettle
+      - Purchase toaster
+      - Purchase coffee maker or pod machine
+      - Purchase blender
+      - Purchase dish rack or confirm dishwasher works
+      - Stock pots — small, medium, large
+      - Stock frying pans — small and large (non-stick)
+      - Stock saucepans with lids
+      - Stock baking tray and roasting pan
+      - Stock mixing bowls (set of 3)
+      - Stock colander/strainer
+      - Stock chopping boards (separate for meat and veg)
+      - Stock knife set with block or magnetic strip
+      - Stock can opener, bottle opener, corkscrew
+      - Stock peeler, grater, ladle, spatula, tongs, wooden spoons
+      - Stock measuring cups and spoons
+      - Stock plates — enough for max guest count plus 2 extra
+      - Stock bowls — enough for max guest count plus 2 extra
+      - Stock mugs — enough for max guest count plus 2 extra
+      - Stock glasses — water, wine, juice
+      - Stock cutlery set — knives, forks, spoons, teaspoons
+      - Stock serving dishes and salad bowl
+      - Stock oven mitts and tea towels (minimum 4)
+      - Stock cling wrap, foil, baking paper, zip lock bags
+      - Stock dish soap, sponges, and scrubbing brush
+      - Stock dishwasher tablets if applicable
+      - Purchase bin with lid for kitchen
+      - Purchase recycling bin or bags
+      - Stock cleaning products under sink
+      - Stock basic pantry staples (salt, pepper, oil, sugar, coffee, tea)
+
+  - title: Bedroom — Linen & Soft Furnishings
+    tasks:
+      - Purchase mattress protectors for all beds (waterproof)
+      - Purchase fitted sheets — 3 sets per bed (wash cycle rotation)
+      - Purchase flat sheets or top sheets — 3 sets per bed
+      - Purchase duvet/quilt with covers — 2 sets per bed
+      - Purchase pillows — 2 per person (minimum)
+      - Purchase pillowcases — 3 sets per pillow
+      - Purchase blanket or throw for each bed
+      - Purchase blackout curtains or blinds for all bedrooms
+      - Purchase bedside lamp for each side of bed
+      - Purchase laundry hamper or basket for each bedroom
+      - Purchase full-length mirror (at least one)
+      - Purchase hangers — minimum 10 per wardrobe
+      - Purchase luggage rack or bench at end of bed
+
+  - title: Bathroom — Fixtures & Supplies
+    tasks:
+      - Check toilet, shower, and bath are functioning
+      - Check water pressure and hot water supply
+      - Purchase shower curtain and rings if needed
+      - Purchase bath mat (non-slip) for each bathroom
+      - Purchase toilet brush and holder
+      - Purchase toilet roll holder if not installed
+      - Stock toilet paper — minimum 4 rolls per bathroom per stay
+      - Purchase towel rails or hooks if insufficient
+      - Stock bath towels — 2 per guest
+      - Stock hand towels — 1 per guest
+      - Stock face washers — 1 per guest
+      - Purchase bathroom bin with lid
+      - Stock shampoo and conditioner (travel or dispenser size)
+      - Stock body wash or bar soap
+      - Stock hand soap at sink
+      - Stock basic toiletry kit (cotton buds, cotton balls)
+      - Install shower shelf or caddy
+      - Purchase hair dryer
+      - Purchase bathroom mirror if not present
+      - Check all tiles, grout, and silicone sealant — repair if needed
+
+  - title: Living Room & Common Areas
+    tasks:
+      - Purchase television — size appropriate for room
+      - Set up streaming services (Netflix, Disney+, etc.)
+      - Purchase universal remote or configure smart TV
+      - Purchase throw cushions for sofa
+      - Purchase throws/blankets for sofa
+      - Purchase floor lamp or additional lighting
+      - Purchase coffee table books or decorative items
+      - Purchase indoor plants (low maintenance)
+      - Purchase artwork or wall décor
+      - Purchase magazine rack or bookshelf with books
+      - Purchase board games or card games for guests
+      - Purchase umbrella stand near entrance
+      - Purchase doormat (indoor and outdoor)
+      - Purchase coat hooks near entrance
+
+  - title: Technology & Connectivity
+    tasks:
+      - Set up high-speed broadband internet (minimum 50 Mbps)
+      - Purchase Wi-Fi router with good range for property size
+      - Place router centrally for even coverage
+      - Test Wi-Fi in every room
+      - Set up a simple guest Wi-Fi password (change regularly)
+      - Display Wi-Fi name and password clearly in welcome guide
+      - Set up smart TV or streaming devices
+      - Set up smart lock if using keyless entry
+      - Consider installing smart thermostat
+      - Consider installing security cameras (exterior only — disclose in listing)
+      - Check all light bulbs — replace with LED
+      - Install dimmers in living/bedroom if possible
+      - Ensure all power outlets have adequate USB ports or adaptors available
+
+  - title: Cleaning & Laundry
+    tasks:
+      - Purchase vacuum cleaner
+      - Purchase mop and bucket
+      - Purchase broom and dustpan
+      - Purchase microfibre cloths (minimum 10)
+      - Purchase window/glass cleaner
+      - Purchase bathroom cleaner and toilet cleaner
+      - Purchase kitchen degreaser
+      - Purchase floor cleaner appropriate for floor type
+      - Purchase laundry detergent and fabric softener
+      - Purchase ironing board and iron
+      - Confirm washing machine is working
+      - Confirm dryer is working (or set up drying rack)
+      - Purchase laundry bags for guests
+      - Set up cleaner contact and schedule between stays
+      - Create cleaning checklist for cleaner
+      - Purchase mattress stain remover
+      - Purchase rubber gloves (multiple pairs)
+
+  - title: Guest Experience & Welcome
+    tasks:
+      - Create printed welcome guide (Wi-Fi, appliances, local tips)
+      - Stock welcome basket (snacks, coffee, tea, water)
+      - Leave local restaurant and café recommendations
+      - Leave public transport map or guide
+      - Leave local emergency numbers prominently displayed
+      - Purchase guest book for feedback and notes
+      - Stock a small medicine kit (paracetamol, band-aids, antacids)
+      - Provide extra blankets in wardrobe
+      - Provide extra pillows in wardrobe
+      - Leave clear instructions for all appliances
+      - Create house manual binder with all instructions
+      - Label all switches and remotes
+      - Leave parking instructions if applicable
+      - Provide luggage storage area or hooks
+      - Create noise policy and display it clearly
+      - Leave checkout instructions clearly visible
+
+  - title: AirBnB Listing Setup
+    tasks:
+      - Create AirBnB host account
+      - Verify identity on platform
+      - Connect payout bank account
+      - Set up listing — title, description, property type
+      - Write compelling headline (max 50 characters)
+      - Write detailed description covering all amenities
+      - List all house rules
+      - Set accurate guest capacity and bedroom/bathroom count
+      - Add all amenities to listing (Wi-Fi, kitchen, parking, etc.)
+      - Set check-in and checkout times
+      - Configure instant book or approval required
+      - Set minimum and maximum stay lengths
+      - Set cancellation policy
+      - Configure advance notice required before booking
+      - Block off dates for personal use or maintenance
+
+  - title: Photography & Presentation
+    tasks:
+      - Deep clean entire property before photography
+      - Style each room — remove clutter, add décor
+      - Make all beds with fresh linen
+      - Set dining table attractively
+      - Open curtains and maximise natural light
+      - Hire professional photographer (strongly recommended)
+      - Ensure photos cover every room and key features
+      - Photograph outdoor areas, entry, and building exterior
+      - Upload minimum 20 high-quality photos to listing
+      - Set cover photo to most attractive room or feature
+      - Write captions for each photo
+
+  - title: Pricing & Revenue Management
+    tasks:
+      - Research comparable listings in your area
+      - Set competitive base nightly rate
+      - Set weekend pricing (typically 10–20% higher)
+      - Configure seasonal pricing for peak periods
+      - Set minimum price floor to ensure profitability
+      - Calculate break-even nightly rate (mortgage + costs ÷ occupancy)
+      - Set cleaning fee (reflect actual cost)
+      - Set security deposit amount if desired
+      - Consider enabling Smart Pricing (AirBnB dynamic pricing)
+      - Review and adjust pricing monthly
+
+  - title: Operations & Ongoing Management
+    tasks:
+      - Set up property management system or calendar (if multi-platform)
+      - Sync calendar across platforms to prevent double bookings
+      - Set up automated messaging for booking confirmation
+      - Set up automated check-in instructions message (day before)
+      - Set up automated checkout reminder message
+      - Set up automated review request after checkout
+      - Find and contract a reliable local cleaner
+      - Find a reliable local handyman for maintenance
+      - Set up a dedicated phone number or email for guests
+      - Create a process for handling guest issues at 2am
+      - Set up a restocking system for consumables
+      - Schedule monthly property inspection
+      - Schedule quarterly deep clean
+      - Set up accounting system to track income and expenses
+      - Review guest reviews monthly and act on feedback
