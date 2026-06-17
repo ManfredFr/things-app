@@ -1,6 +1,6 @@
 ---
 name: things-app
-description: Interact with the Things 3 task manager app on macOS using AppleScript. Use this skill whenever the user wants to create tasks, read tasks, list to-dos, manage projects, search Things, show a list, update or complete existing tasks, or do anything with Things 3 — even if they don't say "Things" explicitly but context makes it clear they're using it for task management.
+description: Interact with the Things 3 task manager app on macOS using AppleScript. Use this skill whenever the user wants to create tasks, read tasks, list to-dos, manage projects, search Things, show a list, update or complete existing tasks, import a YAML template, or do anything with Things 3 — even if they don't say "Things" explicitly but context makes it clear they're using it for task management. Also trigger on "/things-app import <path>" to import a YAML template as a Things project.
 compatibility:
   platform: macOS
   requires: Things 3 (must be installed)
@@ -368,6 +368,67 @@ subprocess.run(["open", f"things:///json?data={encoded}"])
 ```
 
 Always validate the JSON with `json.loads()` before encoding and sending — Things silently rejects malformed JSON with a generic error dialog.
+
+---
+
+## Importing a YAML Template
+
+Things 3 has no native template support. This skill fills that gap with a YAML template format that can be imported as a project with headings.
+
+### Command
+```
+/things-app import <path-to-yaml-file>
+```
+
+### YAML template format
+
+```yaml
+name: Project Name
+type: project
+
+sections:
+
+  - title: Section Heading
+    tasks:
+      - Task one
+      - Task two
+
+  - title: Another Section
+    tasks:
+      - Task three
+```
+
+- `name` — the Things project title (required)
+- `type` — always `project` for now
+- `sections` — list of headings, each with a `tasks` list
+- Sections with no tasks are allowed (empty heading)
+- Tasks are simple strings; no sub-properties needed at this stage
+
+### Import implementation
+
+Read the YAML file, convert to Things JSON format, and send via the `things:///json` URL scheme:
+
+```python
+import yaml, json, urllib.parse, subprocess
+
+with open("/path/to/template.yaml") as f:
+    template = yaml.safe_load(f)
+
+items = []
+for section in template.get("sections", []):
+    items.append({"type": "heading", "attributes": {"title": section["title"]}})
+    for task in section.get("tasks", []):
+        items.append({"type": "to-do", "attributes": {"title": task}})
+
+data = [{"type": "project", "attributes": {"title": template["name"], "items": items}}]
+
+json_str = json.dumps(data)
+json.loads(json_str)  # validate
+encoded = urllib.parse.quote(json_str, safe='')
+subprocess.run(["open", f"things:///json?data={encoded}"])
+```
+
+`pyyaml` is available on macOS via the system Python (`import yaml`). If not installed, fall back to: `pip3 install pyyaml --quiet` before importing.
 
 ### Limitations
 Not all Things features are available via AppleScript. If something isn't documented here, it's likely not possible via scripting.
