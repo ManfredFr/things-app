@@ -302,8 +302,28 @@ end tell
 5. **For writes** — confirm what was done in plain language.
 
 ### Accessing items by name vs. iteration
-- `to do named "X"` — use when the name is known exactly (throws an error if not found).
-- `to dos of list "Today"` + `repeat` — use when iterating or searching by property.
+- `to do named "X"` — only use when you are certain exactly one task exists with that name. Throws an error if not found or if duplicates exist.
+- For any user-initiated lookup, always search across all tasks using iteration to handle duplicates gracefully.
+
+### Finding tasks by name (safe pattern)
+Never assume a task name is unique. Always search all to-dos and collect matches:
+
+```applescript
+tell application "Things3"
+    set matches to {}
+    repeat with t in to dos
+        if name of t is "Buy groceries" and status of t is open then
+            set end of matches to t
+        end if
+    end repeat
+end tell
+```
+
+- If **0 matches** — tell the user no open task with that name was found.
+- If **1 match** — proceed with the action.
+- If **2+ matches** — list them with context (area, project) and ask the user which one(s) to act on.
+
+Include `status of t is open` unless the user explicitly wants to act on completed or canceled tasks.
 
 ### Resolving a list/project/area by name
 When the user says "add to X" and X is not a built-in list, try in this order:
