@@ -140,7 +140,7 @@ end tell
 ### Create a to-do in Today with a deadline
 ```applescript
 tell application "Things3"
-    set newTask to make new to do with properties {name:"Submit report", due date:date "2026-06-20"}
+    set newTask to make new to do with properties {name:"Submit report", due date:date "20 June 2026"}
     schedule newTask for date "today"
 end tell
 ```
@@ -199,7 +199,7 @@ end tell
 ### Set a deadline
 ```applescript
 tell application "Things3"
-    set due date of to do named "Submit report" to date "2026-06-20"
+    set due date of to do named "Submit report" to date "20 June 2026"
 end tell
 ```
 
@@ -306,7 +306,13 @@ end tell
 - `to dos of list "Today"` + `repeat` — use when iterating or searching by property.
 
 ### Dates
-AppleScript dates can be set as strings: `date "2026-06-20"` or natural language: `date "today"`, `date "tomorrow"`.
+Always use unambiguous date formats to avoid locale misinterpretation: `date "20 June 2026"`. Do not use ISO format (`date "2026-06-20"`) — it gets parsed incorrectly depending on system locale. Natural language works too: `date "today"`, `date "tomorrow"`.
+
+### Task placement
+- A task with no `activation date` stays in the **Inbox** (or whichever list/project it was created in).
+- Setting `activation date` schedules the task and moves it to **Today** or **Upcoming**.
+- `due date` is the deadline — setting it alone does not move the task out of the Inbox.
+- Unless the user explicitly asks to schedule a task, never set `activation date`.
 
 ### Limitations
 Not all Things features are available via AppleScript. If something isn't documented here, it's likely not possible via scripting.
