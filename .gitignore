@@ -8,6 +8,9 @@
 
 # Local Claude settings
 .claude/settings.local.json
+CLAUDE.md
+MEMORY.md
+memory/
 
 # Secrets — never commit your Things auth token
 *.token
