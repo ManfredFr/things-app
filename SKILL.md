@@ -10,6 +10,8 @@ compatibility:
 
 Control Things 3 via AppleScript, executed through Bash using `osascript`. This approach supports both **reading** (querying tasks, projects, areas, tags) and **writing** (creating, modifying, moving, deleting items).
 
+> **Allowed tools — AppleScript only.** Every interaction with Things 3 MUST go through `osascript` (AppleScript) run via Bash, or the `things:///json` URL scheme for the heading-related cases noted below (and the Reminders-export AppleScript). **Do NOT use computer use, screenshots, screen capture, image recognition, or mouse/keyboard GUI automation** to read or change Things — not even to "check" or "verify" a result. Reading state means querying it with AppleScript, never looking at the screen. If something genuinely can't be done with these tools, say so plainly instead of falling back to clicking the UI.
+
 Run AppleScript inline:
 
 ```bash
