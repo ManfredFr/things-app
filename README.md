@@ -20,21 +20,14 @@ It is intentionally a building block. On its own it manages Things. Combined wit
 
 ## Requirements
 
-- macOS (Things 3 and AppleScript are macOS-only)
+- **Claude Code running on macOS** — the skill executes `osascript` (AppleScript) in the local shell, so that shell must be on the same Mac as Things.
 - [Things 3](https://culturedcode.com/things/) installed
-- Claude Code or Claude Cowork
+
+> **Not supported in Cowork.** Cowork runs shell commands in a remote Linux sandbox that has no AppleScript and no connection to your Mac's Things app, so the skill's commands can't execute there. Use it with Claude Code on your Mac.
 
 ---
 
 ## Installation
-
-### Cowork / Claude desktop app (one-click)
-
-Download the latest **`things-app.skill`** from the [Releases page](https://github.com/ManfredFr/things-app/releases/latest), open it in the Claude desktop app, and click **Save skill**. It then appears under **Settings → Capabilities → Skills**.
-
-The `.skill` file is built and attached to every tagged release automatically (see [`.github/workflows/package-skill.yml`](.github/workflows/package-skill.yml)).
-
-### Claude Code (clone)
 
 Clone the repository into your Claude skills directory:
 
@@ -42,9 +35,11 @@ Clone the repository into your Claude skills directory:
 git clone https://github.com/ManfredFr/things-app.git ~/.claude/skills/things-app
 ```
 
-Claude automatically discovers skills from `~/.claude/skills/`. Restart Claude (Code or Cowork) to load a newly installed skill — discovery runs at startup. The skill is then available as `/things-app`.
+Claude Code automatically discovers skills from `~/.claude/skills/`. Restart Claude Code to load a newly installed skill — discovery runs at startup. The skill is then available as `/things-app`.
 
-> **Install a real clone, not a symlink.** Cloning (a regular directory) is what Claude's skill discovery expects. A symlink — e.g. pointing at a working copy in Dropbox/iCloud — may not be followed, and sandboxed apps like Cowork can be blocked from reading the link's target.
+> **Install a real clone, not a symlink.** Cloning (a regular directory) is what skill discovery expects. A symlink — e.g. pointing at a working copy in Dropbox/iCloud — may not be followed, and sandboxed apps can be blocked from reading the link's target.
+
+> **About the `.skill` release asset.** Each tagged release attaches a `things-app.skill` file (built by [`.github/workflows/package-skill.yml`](.github/workflows/package-skill.yml)) for the desktop app's one-click install. It installs, but the skill still **won't function in Cowork** for the sandbox reason above — it's provided for completeness, not as a supported path.
 
 ### Updating
 

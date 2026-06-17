@@ -3,7 +3,7 @@ name: things-app
 description: Interact with the Things 3 task manager app on macOS using AppleScript. Use this skill whenever the user wants to create tasks, read tasks, list to-dos, manage projects, search Things, show a list, update or complete existing tasks, import a YAML template, or do anything with Things 3 — even if they don't say "Things" explicitly but context makes it clear they're using it for task management. Also trigger on "/things-app import [path]" to import a YAML template as a Things project.
 compatibility:
   platform: macOS
-  requires: Things 3 (must be installed)
+  requires: Things 3 installed, and a local macOS shell (Claude Code on the Mac). Not Cowork, whose remote Linux sandbox cannot run AppleScript against your Mac.
 ---
 
 # Things 3 — AppleScript Integration
@@ -15,6 +15,8 @@ Control Things 3 via AppleScript, executed through Bash using `osascript`. This 
 > 2. the official Things **URL scheme** (`things:///…`, e.g. `things:///add`, `things:///update`, `things:///json`) opened via `open` — write-only, used where AppleScript can't reach (e.g. headings, template import).
 >
 > **Do NOT use computer use, screenshots, screen capture, image recognition, or mouse/keyboard GUI automation** to read or change Things — not even to "check" or "verify" a result. Reading state means querying it with AppleScript, never looking at the screen. If something genuinely can't be done with these tools, say so plainly instead of falling back to clicking the UI.
+>
+> **Requires a local macOS shell.** This works only where the shell runs on the same Mac as Things (Claude Code on macOS). If `osascript` isn't available or can't reach Things — e.g. in **Cowork**, whose shell is a remote Linux sandbox — the skill cannot run. In that case, tell the user it's unsupported in this environment and stop; do **not** substitute screenshots or screen reading.
 
 Run AppleScript inline:
 
