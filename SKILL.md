@@ -428,7 +428,15 @@ encoded = urllib.parse.quote(json_str, safe='')
 subprocess.run(["open", f"things:///json?data={encoded}"])
 ```
 
-`pyyaml` is available on macOS via the system Python (`import yaml`). If not installed, fall back to: `pip3 install pyyaml --quiet` before importing.
+**`pyyaml` is usually not installed**, and on recent macOS `pip3 install pyyaml` into the system Python is blocked by PEP 668 (`externally-managed-environment`). Use a throwaway virtualenv — it works everywhere and doesn't touch the system Python:
+
+```bash
+python3 -m venv /tmp/things-venv
+/tmp/things-venv/bin/pip install pyyaml --quiet
+/tmp/things-venv/bin/python <your import script>
+```
+
+(`pip3 install pyyaml --break-system-packages` also works but modifies the system Python — prefer the venv.)
 
 ### Limitations
 Not all Things features are available via AppleScript. If something isn't documented here, it's likely not possible via scripting.
